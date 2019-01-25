@@ -20,7 +20,13 @@ class RequestWrapper:
     c.setopt(pycurl.HTTPHEADER, ['Content-Type:application/json', 'Accept:application/json'])
     c.setopt(pycurl.VERBOSE, 0)
 
+    # save the output to a file
+    global f 
+    f = open('./KNOW_YOUR_XSECS', 'wb')
+    c.setopt(c.WRITEDATA, f)
+
     def simple_search(self, keyval_dict):
+        print json.dumps(keyval_dict)
         self._perform_post(self.api_url + '/search', json.dumps(keyval_dict))
 
     def adv_search(self, keyval_dict={}, page_size=20, current_page=0, orderby_field="", order_direction=1):
@@ -59,3 +65,7 @@ class RequestWrapper:
         self.c.setopt(pycurl.POST, 1)
         self.c.setopt(self.c.POSTFIELDS, post_fields)
         self.c.perform()
+    
+
+    def end(d=0):
+        f.close()

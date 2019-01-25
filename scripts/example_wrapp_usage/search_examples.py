@@ -4,7 +4,8 @@ xsdb_req = RequestWrapper()
 
 """ -- 1. SIMPLE QUERY - passing only search fields -- """
 
-query = {'matrix_generator': 'Herw.*', 'energy': '[67]{1}'}
+#query = {'matrix_generator': 'Herw.*', 'energy': '[67]{1}'}
+query= {'process_name':'WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8'}
 xsdb_req.simple_search(query)
 
 """
